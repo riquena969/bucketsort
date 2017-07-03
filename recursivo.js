@@ -1,4 +1,8 @@
 function bucketsort(array, quantidadeBaldes) {
+    // Escrevendo na tela os elementos que chegaram para serem ordenados
+    $('#ordenados').append('Array que chegou -> ' + array.join(', '));
+
+    // Descobrindo o menor e maior elementos
     var menor = array[0];
     var maior = array[0];
     for (var i = 1; i < array.length; i++) {
@@ -6,13 +10,16 @@ function bucketsort(array, quantidadeBaldes) {
         maior = array[i] > maior ? array[i] : maior;
     }
 
+    // Descobrindo abrangência do balde. (De onde até onde ele vai)
     abrangencia = (maior - menor - 0.1) / quantidadeBaldes;
 
+    // Criando baldes
     var buckets = [];
     for (var i = 0; i < quantidadeBaldes; i++) {
         buckets[i] = [];
     }
 
+    // Adicionando itens nos baldes
     for (var i = 0; i < array.length; i++) {
         buckets[Math.floor(array[i] / quantidadeBaldes)].push(array[i]);
     }
