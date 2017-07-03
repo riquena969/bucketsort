@@ -1,6 +1,6 @@
 function bucketsort(array, quantidadeBaldes) {
     // Escrevendo na tela os elementos que chegaram para serem ordenados
-    $('#ordenados').append('Array que chegou -> ' + array.join(', '));
+    $('#ordenados').append('<li class="list-group-item">Array que chegou -> ' + array.join(', ') + '</li>');
 
     // Descobrindo o menor e maior elementos
     var menor = array[0];
@@ -11,7 +11,7 @@ function bucketsort(array, quantidadeBaldes) {
     }
 
     // Descobrindo abrangência do balde. (De onde até onde ele vai)
-    abrangencia = (maior - menor - 0.1) / quantidadeBaldes;
+    abrangencia = (maior - menor) / quantidadeBaldes;
 
     // Criando baldes
     var buckets = [];
@@ -21,10 +21,16 @@ function bucketsort(array, quantidadeBaldes) {
 
     // Adicionando itens nos baldes
     for (var i = 0; i < array.length; i++) {
-        buckets[Math.floor(array[i] / quantidadeBaldes)].push(array[i]);
+        indiceDestino = Math.floor(array[i] / abrangencia);
+
+        buckets[(indiceDestino >= quantidadeBaldes ? (quantidadeBaldes - 1) : indiceDestino)].push(array[i]);
     }
 
-    console.log(buckets);
+    // Exibindo baldes criados
+    $('#ordenados').append('<li class="list-group-item">Baldes Gerados:<br></li>');
+    for (var i = 0; i < buckets.length; i++) {
+        $('#ordenados li').last().append('Balde ' + (i + 1) + ' (' + Math.round((menor + (i * abrangencia)) * 100)/100 + ' - ' + Math.round((menor + ((i + 1) * abrangencia)) * 100)/100 + ') - ' + buckets[i].join(', ') + '<br>');
+    }
 }
 
 /* Funções da tela */
@@ -40,6 +46,8 @@ function adicionarElemento() {
 }
 
 function ordenarElementos() {
+    $('#ordenados').html('');
+
     if ($('.itens .col-xs-2').length == 0) {
         alert('Você não tem elementos para ordenar!');
     }
