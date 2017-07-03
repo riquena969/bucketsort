@@ -1,4 +1,5 @@
 function bucketsort(array, quantidadeBaldes) {
+    console.log(array.join());
     // Escrevendo na tela os elementos que chegaram para serem ordenados
     $('#ordenados').append('<li class="list-group-item">Array que chegou -> ' + array.join(', ') + '</li>');
 
@@ -21,7 +22,7 @@ function bucketsort(array, quantidadeBaldes) {
 
     // Adicionando itens nos baldes
     for (var i = 0; i < array.length; i++) {
-        indiceDestino = Math.floor(array[i] / abrangencia);
+        indiceDestino = Math.floor((array[i] - menor) / abrangencia);
 
         buckets[(indiceDestino >= quantidadeBaldes ? (quantidadeBaldes - 1) : indiceDestino)].push(array[i]);
     }
@@ -31,6 +32,30 @@ function bucketsort(array, quantidadeBaldes) {
     for (var i = 0; i < buckets.length; i++) {
         $('#ordenados li').last().append('Balde ' + (i + 1) + ' (' + Math.round((menor + (i * abrangencia)) * 100)/100 + ' - ' + Math.round((menor + ((i + 1) * abrangencia)) * 100)/100 + ') - ' + buckets[i].join(', ') + '<br>');
     }
+
+    // Verifica se os baldes precisam ser ordenados antes de retornar..
+    for (var i = 0; i < buckets.length; i++) {
+        elementos = buckets[i];
+        ordenar = false;
+        for (var j = 1; j < elementos.length; j++) {
+            ordenar = elementos[j-1] > elementos[j] ? true : ordenar;
+        }
+        if (ordenar) {
+            buckets[i] = bucketsort(elementos, quantidadeBaldes);
+        }
+    }
+
+    // Voltando valores para a array original
+    atual = 0;
+    for (var i = 0 ; i < buckets.length ; i++) {
+        for(var j = 0 ; j < buckets[i].length ; j++) {
+            array[atual] = buckets[i][j];
+            atual++;
+        }
+    }
+
+    // Retornando a array ordenada
+    return array;
 }
 
 /* Funções da tela */
@@ -57,7 +82,7 @@ function ordenarElementos() {
         itens.push(parseFloat($(item).val()));
     });
 
-    bucketsort(itens, 5);
+    console.log(bucketsort(itens, 5));
 }
 
 $('.itens').on('dblclick', 'input[type=number]', function() {
