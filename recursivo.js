@@ -82,7 +82,8 @@ function ordenarElementos() {
         itens.push(parseFloat($(item).val()));
     });
 
-    console.log(bucketsort(itens, 5));
+    arrayOrdenado = bucketsort(itens, 5);
+    $('#ordenados').append('<li class="list-group-item active">Array ordenado: ' + arrayOrdenado.join(', ') + '</li>');
 }
 
 $('.itens').on('dblclick', 'input[type=number]', function() {
