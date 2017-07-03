@@ -1,4 +1,4 @@
-function bucketsort(array) {
+function bucketsort(array, quantidadeBaldes) {
     var menor = array[0];
     var maior = array[0];
     for (var i = 1; i < array.length; i++) {
@@ -6,8 +6,18 @@ function bucketsort(array) {
         maior = array[i] > maior ? array[i] : maior;
     }
 
-    console.log(menor);
-    console.log(maior);
+    abrangencia = (maior - menor - 0.1) / quantidadeBaldes;
+
+    var buckets = [];
+    for (var i = 0; i < quantidadeBaldes; i++) {
+        buckets[i] = [];
+    }
+
+    for (var i = 0; i < array.length; i++) {
+        buckets[Math.floor(array[i] / quantidadeBaldes)].push(array[i]);
+    }
+
+    console.log(buckets);
 }
 
 /* Funções da tela */
@@ -32,7 +42,7 @@ function ordenarElementos() {
         itens.push(parseFloat($(item).val()));
     });
 
-    bucketsort(itens);
+    bucketsort(itens, 5);
 }
 
 $('.itens').on('dblclick', 'input[type=number]', function() {
