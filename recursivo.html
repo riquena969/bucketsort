@@ -11,6 +11,10 @@
     <div class="container-fluid">
         <div class="col-xs-6">
             <h1>Não ordenado</h1>
+            <div class="form-group">
+                <label for="quantidadeBaldes">Quantidade de baldes</label>
+                <input type="number" class="form-control" id="quantidadeBaldes" value="5">
+            </div>
             <div class="btn-group btn-group-justified" role="group">
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary" onclick="adicionarElemento()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar</button>
@@ -24,9 +28,7 @@
         </div>
         <div class="col-xs-6">
             <h1>Ordenado</h1>
-            <ul class="list-group" id="ordenados">
-                
-            </ul>
+            <ul class="list-group" id="ordenados"></ul>
         </div>
     </div>
 

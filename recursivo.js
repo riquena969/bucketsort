@@ -83,7 +83,13 @@ function ordenarElementos() {
         itens.push(parseFloat($(item).val()));
     });
 
-    arrayOrdenado = bucketsort(itens, 5, 0);
+    quantidadeBaldes = parseInt($('#quantidadeBaldes').val());
+    if(quantidadeBaldes <= 1) {
+        alert('Você precisa ter ao menos dois baldes para que a ordenação funcione.');
+        return false;
+    }
+
+    arrayOrdenado = bucketsort(itens, quantidadeBaldes, 0);
 }
 
 $('.itens').on('dblclick', 'input[type=number]', function() {
