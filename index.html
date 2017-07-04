@@ -9,26 +9,38 @@
 </head>
 <body>
     <div class="container-fluid">
-        <div class="col-xs-6">
-            <h1>Não ordenado</h1>
-            <div class="btn-group btn-group-justified" role="group">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary" onclick="adicionarElemento()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar</button>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-success" onclick="ordenarElementos()"><span class="glyphicon glyphicon-sort-by-order" aria-hidden="true"></span> Ordenar</button>
+        <h1>BucketSort</h1>
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2">
+                <div class="btn-group btn-group-justified" role="group">
+                    <div class="btn-group">
+                        <a class="btn btn-primary" href="recursivo.html">Visualizar Recursivo</a>
+                    </div>
+                    <div class="btn-group">
+                        <a class="btn btn-success" href="naoRecursivo.html">Visualizar Não Recursivo</a>
+                    </div>
                 </div>
             </div>
-            <div class="itens"></div>
         </div>
-        <div class="col-xs-6">
-            <h1>Ordenado</h1>
-            <ul class="list-group" id="ordenados"></ul>
+        <br>
+        <div class="row">
+            <div class="jumbotron">
+                <h1>Integrantes</h1>
+                <ul>
+                    <li>Felipe Queiroz - <b>bv1610848</b></li>
+                    <li>Gabriela Sakai - <b>bv1610783</b></li>
+                    <li>Kevin Riquena - <b>bv1610465</b></li>
+                    <li>Pedro Saito - <b>bv1610155</b></li>
+                    <li>Rafael Augusto - <b>bv1610252</b></li>
+                </ul>
+                <p class="text-center">
+                    <a href="https://github.com/riquena969/bucketsort" target="_blank">https://github.com/riquena969/bucketsort</a>
+                </p>
+            </div>
         </div>
     </div>
 
     <script src="jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="index.js"></script>
 </body>
 </html>

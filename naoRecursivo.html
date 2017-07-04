@@ -11,10 +11,6 @@
     <div class="container-fluid">
         <div class="col-xs-6">
             <h1>Não ordenado</h1>
-            <div class="form-group">
-                <label for="quantidadeBaldes">Quantidade de baldes</label>
-                <input type="number" class="form-control" id="quantidadeBaldes" value="5">
-            </div>
             <div class="btn-group btn-group-justified" role="group">
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary" onclick="adicionarElemento()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar</button>
@@ -26,8 +22,7 @@
                     <a class="btn btn-danger" href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Início</a>
                 </div>
             </div>
-            <hr>
-            <div class="row itens"></div>
+            <div class="itens"></div>
         </div>
         <div class="col-xs-6">
             <h1>Ordenado</h1>
@@ -37,6 +32,6 @@
 
     <script src="jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="recursivo.js"></script>
+    <script src="naoRecursivo.js"></script>
 </body>
 </html>
